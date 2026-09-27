@@ -1,0 +1,330 @@
+[
+  {
+    "id": "001",
+    "raw_name": "Eleanor Vance",
+    "raw_mrn": "MRN-882104",
+    "raw_dob": "1967-11-20",
+    "raw_phone": "(555) 234-8901",
+    "raw_address": "742 Evergreen Terrace, Springfield",
+    "raw_doctor": "Dr. Sarah Lin, MD",
+    "age_years": 58,
+    "gender": "Female",
+    "labs": {
+      "HbA1c": {
+        "test_name": "Hemoglobin A1c",
+        "loinc": "LOINC: 4548-4",
+        "value": 8.4,
+        "unit": "%",
+        "study_day_offset": -4,
+        "source_record": "Central Chemistry Panel"
+      },
+      "eGFR": {
+        "test_name": "Glomerular Filtration Rate (CKD-EPI)",
+        "loinc": "LOINC: 33914-3",
+        "value": 44.0,
+        "unit": "mL/min/1.73m2",
+        "study_day_offset": -4,
+        "source_record": "Renal Function Panel"
+      }
+    },
+    "diagnoses": [
+      {
+        "icd10": "ICD-10: E11.9",
+        "condition_name": "Type 2 Diabetes Mellitus",
+        "is_active": true,
+        "study_day_offset": -180
+      },
+      {
+        "icd10": "ICD-10: N18.30",
+        "condition_name": "Chronic Kidney Disease Stage 3",
+        "is_active": true,
+        "study_day_offset": -120
+      }
+    ],
+    "medications": [
+      {
+        "drug_name": "Metformin 1000mg",
+        "rxnorm": "RxNorm: 6809",
+        "is_active": true,
+        "last_taken_day_offset": -1
+      },
+      {
+        "drug_name": "Semaglutide (GLP-1 Receptor Agonist)",
+        "rxnorm": "RxNorm: 1358983",
+        "is_active": false,
+        "last_taken_day_offset": -45,
+        "washout_status": "Discontinued 45 days prior to screening"
+      }
+    ],
+    "clinical_notes": [
+      "Patient Eleanor Vance presented for trial pre-screening. History of well-controlled T2D. Stopped GLP-1 injection 45 days ago due to mild GI upset. Baseline renal function stable with eGFR 44. Attending: Dr. Sarah Lin, MD."
+    ]
+  },
+  {
+    "id": "002",
+    "raw_name": "Arthur Pendelton",
+    "raw_mrn": "MRN-330192",
+    "raw_dob": "1963-04-12",
+    "raw_phone": "(555) 789-0123",
+    "raw_address": "120 Elmwood St, Boston, MA",
+    "raw_doctor": "Dr. Marcus Vance, MD",
+    "age_years": 63,
+    "gender": "Male",
+    "labs": {
+      "HbA1c": {
+        "test_name": "Hemoglobin A1c",
+        "loinc": "LOINC: 4548-4",
+        "value": 8.1,
+        "unit": "%",
+        "study_day_offset": -3,
+        "source_record": "Metabolic Panel"
+      },
+      "eGFR": {
+        "test_name": "Glomerular Filtration Rate (CKD-EPI)",
+        "loinc": "LOINC: 33914-3",
+        "value": 61.2,
+        "unit": "mL/min/1.73m2",
+        "study_day_offset": -3,
+        "source_record": "Renal Panel"
+      }
+    },
+    "diagnoses": [
+      {
+        "icd10": "ICD-10: E11.9",
+        "condition_name": "Type 2 Diabetes Mellitus",
+        "is_active": true,
+        "study_day_offset": -365
+      }
+    ],
+    "medications": [
+      {
+        "drug_name": "Dulaglutide (GLP-1)",
+        "rxnorm": "RxNorm: 1358983",
+        "is_active": false,
+        "last_taken_day_offset": -40
+      }
+    ],
+    "clinical_notes": [
+      "Patient Arthur Pendelton has mild CKD improvement. Current eGFR measured at 61.2 mL/min/1.73m2, which exceeds protocol inclusion upper limit of 60.0. Contact phone: (555) 789-0123."
+    ]
+  },
+  {
+    "id": "003",
+    "raw_name": "Maria Santos",
+    "raw_mrn": "MRN-902341",
+    "raw_dob": "1970-09-05",
+    "raw_phone": "(555) 443-1289",
+    "raw_address": "400 Sunset Blvd, Los Angeles, CA",
+    "raw_doctor": "Dr. Angela Rossi, MD",
+    "age_years": 55,
+    "gender": "Female",
+    "labs": {
+      "HbA1c": {
+        "test_name": "Hemoglobin A1c",
+        "loinc": "LOINC: 4548-4",
+        "value": 9.1,
+        "unit": "%",
+        "study_day_offset": -2,
+        "source_record": "Endocrine Panel"
+      },
+      "eGFR": {
+        "test_name": "Glomerular Filtration Rate",
+        "loinc": "LOINC: 33914-3",
+        "value": 38.5,
+        "unit": "mL/min/1.73m2",
+        "study_day_offset": -2,
+        "source_record": "Renal Panel"
+      }
+    },
+    "diagnoses": [
+      {
+        "icd10": "ICD-10: E11.9",
+        "condition_name": "Type 2 Diabetes Mellitus",
+        "is_active": true,
+        "study_day_offset": -400
+      }
+    ],
+    "medications": [
+      {
+        "drug_name": "Ozempic (Semaglutide GLP-1)",
+        "rxnorm": "RxNorm: 1358983",
+        "is_active": false,
+        "last_taken_day_offset": -12,
+        "washout_status": "Last dose taken 12 days ago"
+      }
+    ],
+    "clinical_notes": [
+      "Maria Santos took last dose of Ozempic 12 days ago. Washout protocol requires >= 30 days before Day 1 randomization."
+    ]
+  },
+  {
+    "id": "004",
+    "raw_name": "Robert Chen",
+    "raw_mrn": "MRN-551029",
+    "raw_dob": "1966-02-18",
+    "raw_phone": "(555) 901-2345",
+    "raw_address": "88 Horizon Way, Seattle, WA",
+    "raw_doctor": "Dr. Kevin Patel, MD",
+    "age_years": 60,
+    "gender": "Male",
+    "labs": {
+      "eGFR": {
+        "test_name": "Glomerular Filtration Rate",
+        "loinc": "LOINC: 33914-3",
+        "value": 42.0,
+        "unit": "mL/min/1.73m2",
+        "study_day_offset": -5,
+        "source_record": "Renal Panel"
+      }
+    },
+    "diagnoses": [
+      {
+        "icd10": "ICD-10: E11.9",
+        "condition_name": "Type 2 Diabetes Mellitus",
+        "is_active": true,
+        "study_day_offset": -200
+      }
+    ],
+    "medications": [],
+    "clinical_notes": [
+      "Robert Chen completed renal panel. Central HbA1c specimen hemolyzed during transit; awaiting redraw. Currently UNKNOWN eligibility for HbA1c criterion."
+    ]
+  },
+  {
+    "id": "005",
+    "raw_name": "James Henderson",
+    "raw_mrn": "MRN-774411",
+    "raw_dob": "1962-07-22",
+    "raw_phone": "(555) 321-9988",
+    "raw_address": "512 Oak Ridge Rd, Chicago, IL",
+    "raw_doctor": "Dr. Elizabeth Warren, MD",
+    "age_years": 64,
+    "gender": "Male",
+    "labs": {
+      "ANC": {
+        "test_name": "Absolute Neutrophil Count",
+        "loinc": "LOINC: 26464-8",
+        "value": 2400.0,
+        "unit": "/uL",
+        "study_day_offset": -3,
+        "source_record": "Complete Blood Count"
+      },
+      "Platelets": {
+        "test_name": "Platelet Count",
+        "loinc": "LOINC: 777-3",
+        "value": 185000.0,
+        "unit": "/uL",
+        "study_day_offset": -3,
+        "source_record": "Complete Blood Count"
+      }
+    },
+    "diagnoses": [
+      {
+        "icd10": "ICD-10: C34.90",
+        "condition_name": "Non-Small Cell Lung Cancer Stage IV",
+        "is_active": true,
+        "study_day_offset": -90
+      }
+    ],
+    "medications": [],
+    "clinical_notes": [
+      "James Henderson presents with advanced EGFR Exon 19 del NSCLC. Head MRI confirmed negative for CNS metastases. ANC 2400, Platelets 185,000. No prior EGFR-TKI."
+    ]
+  },
+  {
+    "id": "006",
+    "raw_name": "Dorothy Gale",
+    "raw_mrn": "MRN-661290",
+    "raw_dob": "1955-03-30",
+    "raw_phone": "(555) 888-2121",
+    "raw_address": "16 Yellow Brick Rd, Topeka, KS",
+    "raw_doctor": "Dr. Frank Baum, MD",
+    "age_years": 71,
+    "gender": "Female",
+    "labs": {
+      "ANC": {
+        "test_name": "Absolute Neutrophil Count",
+        "loinc": "LOINC: 26464-8",
+        "value": 1200.0,
+        "unit": "/uL",
+        "study_day_offset": -2,
+        "source_record": "CBC with Diff"
+      },
+      "Platelets": {
+        "test_name": "Platelet Count",
+        "loinc": "LOINC: 777-3",
+        "value": 92000.0,
+        "unit": "/uL",
+        "study_day_offset": -2,
+        "source_record": "CBC with Diff"
+      }
+    },
+    "diagnoses": [
+      {
+        "icd10": "ICD-10: C34.90",
+        "condition_name": "Non-Small Cell Lung Cancer",
+        "is_active": true,
+        "study_day_offset": -120
+      },
+      {
+        "icd10": "ICD-10: C79.31",
+        "condition_name": "Brain Metastases (Active)",
+        "is_active": true,
+        "study_day_offset": -15
+      }
+    ],
+    "medications": [],
+    "clinical_notes": [
+      "Dorothy Gale brain MRI showed 2 new enhancing lesions in cerebellum. Platelets low at 92,000 and ANC 1200. Patient ineligible on 3 criteria."
+    ]
+  },
+  {
+    "id": "007",
+    "raw_name": "Samuel Jackson",
+    "raw_mrn": "MRN-194820",
+    "raw_dob": "1959-12-21",
+    "raw_phone": "(555) 777-6655",
+    "raw_address": "300 Pacific Ave, Santa Monica, CA",
+    "raw_doctor": "Dr. Quentin Tarantino, MD",
+    "age_years": 66,
+    "gender": "Male",
+    "labs": {
+      "LVEF": {
+        "test_name": "Left Ventricular Ejection Fraction",
+        "loinc": "LOINC: 88062-5",
+        "value": 32.0,
+        "unit": "%",
+        "study_day_offset": -10,
+        "source_record": "Transthoracic Echocardiogram"
+      },
+      "NT-proBNP": {
+        "test_name": "NT-proBNP",
+        "loinc": "LOINC: 33762-6",
+        "value": 1450.0,
+        "unit": "pg/mL",
+        "study_day_offset": -3,
+        "source_record": "Cardiac Biomarker Panel"
+      },
+      "SystolicBP": {
+        "test_name": "Systolic Blood Pressure",
+        "loinc": "LOINC: 8480-6",
+        "value": 118.0,
+        "unit": "mmHg",
+        "study_day_offset": -1,
+        "source_record": "Vitals"
+      }
+    },
+    "diagnoses": [
+      {
+        "icd10": "ICD-10: I50.9",
+        "condition_name": "Heart Failure NYHA Class III",
+        "is_active": true,
+        "study_day_offset": -250
+      }
+    ],
+    "medications": [],
+    "clinical_notes": [
+      "Samuel Jackson presents for HFrEF trial screening. Echo shows LVEF 32%, severe LV systolic dysfunction. NT-proBNP elevated at 1450 pg/mL. Resting SBP 118 mmHg."
+    ]
+  }
+]

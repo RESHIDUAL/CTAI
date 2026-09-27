@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  clinical-screening-platform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: clinical_trial_screening_app
+    ports:
+      - "8000:8000"
+    environment:
+      - LYZR_API_KEY=${LYZR_API_KEY:-}
+      - LYZR_ENVIRONMENT_ID=${LYZR_ENVIRONMENT_ID:-env_clinical_trial_01}
+      - LYZR_BASE_URL=${LYZR_BASE_URL:-https://agent-prod.studio.lyzr.ai/v3/inference/chat/}
+      - LYZR_USER_ID=${LYZR_USER_ID:-coordinator@clinicaltrial.org}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

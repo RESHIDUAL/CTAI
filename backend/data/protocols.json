@@ -1,0 +1,500 @@
+[
+  {
+    "id": "proto_nsclc_01",
+    "nct_id": "NCT04561234",
+    "title": "Phase III Trial of Osimertinib in Advanced EGFR-Mutated Non-Small Cell Lung Cancer",
+    "phase": "Phase III",
+    "indication": "Advanced EGFR+ Non-Small Cell Lung Cancer",
+    "investigational_drug": "Osimertinib 80mg daily",
+    "version": "4.2",
+    "m11_aligned": true,
+    "criteria": [
+      {
+        "criterion_id": "INC_01",
+        "type": "INCLUSION",
+        "category": "DEMOGRAPHIC",
+        "concept_name": "Age",
+        "concept_code": null,
+        "operator": ">=",
+        "threshold": 18,
+        "unit": "years",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 12,
+          "section": "4.1 Inclusion Criteria",
+          "paragraph": 1,
+          "raw_clause": "Patient must be >= 18 years of age at the time of signing informed consent."
+        },
+        "description": "Patient age must be 18 years or older."
+      },
+      {
+        "criterion_id": "INC_02",
+        "type": "INCLUSION",
+        "category": "DIAGNOSIS",
+        "concept_name": "Non-Small Cell Lung Cancer",
+        "concept_code": "ICD-10: C34.90",
+        "operator": "==",
+        "threshold": "PRESENT",
+        "unit": null,
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 12,
+          "section": "4.1 Inclusion Criteria",
+          "paragraph": 2,
+          "raw_clause": "Histologically or cytologically confirmed locally advanced or metastatic EGFRm NSCLC."
+        },
+        "description": "Confirmed diagnosis of Non-Small Cell Lung Cancer."
+      },
+      {
+        "criterion_id": "INC_03",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "ANC",
+        "concept_code": "LOINC: 26464-8",
+        "operator": ">=",
+        "threshold": 1500,
+        "unit": "/uL",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 13,
+          "section": "4.1 Inclusion Criteria",
+          "paragraph": 4,
+          "raw_clause": "Absolute neutrophil count (ANC) >= 1,500/uL without growth factor support within 14 days."
+        },
+        "description": "Absolute Neutrophil Count >= 1,500 /uL."
+      },
+      {
+        "criterion_id": "INC_04",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "Platelets",
+        "concept_code": "LOINC: 777-3",
+        "operator": ">=",
+        "threshold": 100000,
+        "unit": "/uL",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 13,
+          "section": "4.1 Inclusion Criteria",
+          "paragraph": 5,
+          "raw_clause": "Platelet count >= 100,000/uL."
+        },
+        "description": "Platelet count >= 100,000 /uL."
+      },
+      {
+        "criterion_id": "EXC_01",
+        "type": "EXCLUSION",
+        "category": "DIAGNOSIS",
+        "concept_name": "Brain Metastases",
+        "concept_code": "ICD-10: C79.31",
+        "operator": "EXCLUDES",
+        "threshold": "ABSENT",
+        "unit": null,
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 14,
+          "section": "4.2 Exclusion Criteria",
+          "paragraph": 3,
+          "raw_clause": "Symptomatic or untreated central nervous system (CNS) brain metastases."
+        },
+        "description": "Excludes active or untreated CNS brain metastases."
+      },
+      {
+        "criterion_id": "EXC_02",
+        "type": "EXCLUSION",
+        "category": "MEDICATION_WASHOUT",
+        "concept_name": "EGFR-TKI",
+        "concept_code": "RxNorm: 1658189",
+        "operator": "WASHOUT_DAYS",
+        "threshold": 14,
+        "unit": "days",
+        "washout_days": 14,
+        "protocol_citation": {
+          "page": 15,
+          "section": "4.2 Exclusion Criteria",
+          "paragraph": 7,
+          "raw_clause": "Prior treatment with an investigational EGFR-TKI within 14 days of Day 1."
+        },
+        "description": "Requires at least 14 days washout from prior EGFR-TKI therapy."
+      }
+    ]
+  },
+  {
+    "id": "proto_t2d_ckd_02",
+    "nct_id": "NCT05128990",
+    "title": "Phase IIb Study of Novel SGLT2/MRA Combination in Type 2 Diabetes and Moderate Chronic Kidney Disease",
+    "phase": "Phase IIb",
+    "indication": "Type 2 Diabetes & Chronic Kidney Disease Stage 3",
+    "investigational_drug": "BI-8940 25mg orally once daily",
+    "version": "3.1",
+    "m11_aligned": true,
+    "criteria": [
+      {
+        "criterion_id": "INC_01",
+        "type": "INCLUSION",
+        "category": "DEMOGRAPHIC",
+        "concept_name": "Age",
+        "concept_code": null,
+        "operator": ">=",
+        "threshold": 18,
+        "unit": "years",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 16,
+          "section": "5.1 Patient Eligibility",
+          "paragraph": 1,
+          "raw_clause": "Adult patients age >= 18 years at time of screening."
+        },
+        "description": "Patient age >= 18 years."
+      },
+      {
+        "criterion_id": "INC_02",
+        "type": "INCLUSION",
+        "category": "DIAGNOSIS",
+        "concept_name": "Type 2 Diabetes",
+        "concept_code": "ICD-10: E11.9",
+        "operator": "==",
+        "threshold": "PRESENT",
+        "unit": null,
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 16,
+          "section": "5.1 Patient Eligibility",
+          "paragraph": 2,
+          "raw_clause": "Documented diagnosis of Type 2 Diabetes Mellitus for >= 6 months."
+        },
+        "description": "Documented diagnosis of Type 2 Diabetes."
+      },
+      {
+        "criterion_id": "INC_03",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "HbA1c",
+        "concept_code": "LOINC: 4548-4",
+        "operator": "BETWEEN",
+        "threshold": [7.5, 10.5],
+        "unit": "%",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 17,
+          "section": "5.1 Patient Eligibility",
+          "paragraph": 4,
+          "raw_clause": "HbA1c between 7.5% and 10.5% inclusive at screening central lab."
+        },
+        "description": "Glycated Hemoglobin (HbA1c) between 7.5% and 10.5%."
+      },
+      {
+        "criterion_id": "INC_04",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "eGFR",
+        "concept_code": "LOINC: 33914-3",
+        "operator": "BETWEEN",
+        "threshold": [30.0, 60.0],
+        "unit": "mL/min/1.73m2",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 17,
+          "section": "5.1 Patient Eligibility",
+          "paragraph": 5,
+          "raw_clause": "Estimated GFR (CKD-EPI) between 30.0 and 60.0 mL/min/1.73m2."
+        },
+        "description": "eGFR between 30.0 and 60.0 mL/min/1.73m2."
+      },
+      {
+        "criterion_id": "EXC_01",
+        "type": "EXCLUSION",
+        "category": "DIAGNOSIS",
+        "concept_name": "Diabetic Ketoacidosis",
+        "concept_code": "ICD-10: E11.10",
+        "operator": "EXCLUDES",
+        "threshold": "ABSENT",
+        "unit": null,
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 18,
+          "section": "5.2 Exclusion Criteria",
+          "paragraph": 2,
+          "raw_clause": "History of diabetic ketoacidosis or hyperosmolar hyperglycemic state within 12 months."
+        },
+        "description": "Excludes history of Diabetic Ketoacidosis."
+      },
+      {
+        "criterion_id": "EXC_02",
+        "type": "EXCLUSION",
+        "category": "MEDICATION_WASHOUT",
+        "concept_name": "GLP-1 Receptor Agonist",
+        "concept_code": "RxNorm: 1358983",
+        "operator": "WASHOUT_DAYS",
+        "threshold": 30,
+        "unit": "days",
+        "washout_days": 30,
+        "protocol_citation": {
+          "page": 19,
+          "section": "5.2 Exclusion Criteria",
+          "paragraph": 6,
+          "raw_clause": "Use of GLP-1 receptor agonists within 30 days prior to randomization."
+        },
+        "description": "Requires at least 30 days washout from prior GLP-1 receptor agonist therapy."
+      }
+    ]
+  },
+  {
+    "id": "proto_hfref_03",
+    "nct_id": "NCT03984120",
+    "title": "Phase III Study of Targeted Myocardial Energetics Modulator in Heart Failure with Reduced Ejection Fraction",
+    "phase": "Phase III",
+    "indication": "Heart Failure with Reduced Ejection Fraction (NYHA II-IV)",
+    "investigational_drug": "CardioMod 10mg twice daily",
+    "version": "2.0",
+    "m11_aligned": true,
+    "criteria": [
+      {
+        "criterion_id": "INC_01",
+        "type": "INCLUSION",
+        "category": "DEMOGRAPHIC",
+        "concept_name": "Age",
+        "concept_code": null,
+        "operator": ">=",
+        "threshold": 18,
+        "unit": "years",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 8,
+          "section": "3.1 Eligibility Criteria",
+          "paragraph": 1,
+          "raw_clause": "Age >= 18 years."
+        },
+        "description": "Age >= 18 years."
+      },
+      {
+        "criterion_id": "INC_02",
+        "type": "INCLUSION",
+        "category": "DIAGNOSIS",
+        "concept_name": "Heart Failure",
+        "concept_code": "ICD-10: I50.9",
+        "operator": "==",
+        "threshold": "PRESENT",
+        "unit": null,
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 8,
+          "section": "3.1 Eligibility Criteria",
+          "paragraph": 2,
+          "raw_clause": "Chronic heart failure (NYHA class II-IV) diagnosed >= 30 days prior to baseline."
+        },
+        "description": "Documented diagnosis of Heart Failure."
+      },
+      {
+        "criterion_id": "INC_03",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "LVEF",
+        "concept_code": "LOINC: 88062-5",
+        "operator": "<=",
+        "threshold": 40.0,
+        "unit": "%",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 9,
+          "section": "3.1 Eligibility Criteria",
+          "paragraph": 3,
+          "raw_clause": "Left ventricular ejection fraction (LVEF) <= 40% measured within 12 months."
+        },
+        "description": "Left Ventricular Ejection Fraction <= 40%."
+      },
+      {
+        "criterion_id": "INC_04",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "NT-proBNP",
+        "concept_code": "LOINC: 33762-6",
+        "operator": ">=",
+        "threshold": 600.0,
+        "unit": "pg/mL",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 9,
+          "section": "3.1 Eligibility Criteria",
+          "paragraph": 4,
+          "raw_clause": "Plasma NT-proBNP >= 600 pg/mL (or BNP >= 150 pg/mL) at screening."
+        },
+        "description": "NT-proBNP >= 600 pg/mL."
+      },
+      {
+        "criterion_id": "EXC_01",
+        "type": "EXCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "SystolicBP",
+        "concept_code": "LOINC: 8480-6",
+        "operator": "<",
+        "threshold": 95.0,
+        "unit": "mmHg",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 10,
+          "section": "3.2 Exclusion Criteria",
+          "paragraph": 1,
+          "raw_clause": "Systolic blood pressure < 95 mmHg at screening."
+        },
+        "description": "Excludes patients with severe hypotension (SBP < 95 mmHg)."
+      }
+    ]
+  },
+  {
+    "id": "proto_neuro_multi_04",
+    "nct_id": "NCT05991024",
+    "title": "Phase II Multi-Domain Protocol in Early Alzheimer's Disease & Neurocognitive Biomarkers",
+    "phase": "Phase II",
+    "indication": "Early Symptomatic Alzheimer's Disease (Neurocognitive & Biomarker Confirmation)",
+    "investigational_drug": "Amyloid-Clear Monoclonal 10mg/kg IV Q2W",
+    "version": "1.0",
+    "m11_aligned": true,
+    "criteria": [
+      {
+        "criterion_id": "INC_01",
+        "type": "INCLUSION",
+        "category": "DEMOGRAPHIC",
+        "concept_name": "Age",
+        "concept_code": null,
+        "operator": ">=",
+        "threshold": 55,
+        "unit": "years",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 7,
+          "section": "3.1 Inclusion Criteria",
+          "paragraph": 1,
+          "raw_clause": "Age >= 55 years at the time of screening."
+        },
+        "description": "Patient age >= 55 years (Demographic criteria)."
+      },
+      {
+        "criterion_id": "INC_02",
+        "type": "INCLUSION",
+        "category": "DIAGNOSIS",
+        "concept_name": "Early Alzheimer Disease",
+        "concept_code": "SNOMED: 26929004",
+        "operator": "==",
+        "threshold": "PRESENT",
+        "unit": null,
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 7,
+          "section": "3.1 Inclusion Criteria",
+          "paragraph": 2,
+          "raw_clause": "Documented diagnosis of Early Alzheimer's Disease (SNOMED: 26929004 / ICD-10: G30.0)."
+        },
+        "description": "Documented diagnosis of Early Alzheimer Disease (SNOMED-CT / ICD-10 concept)."
+      },
+      {
+        "criterion_id": "INC_03",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "MMSE",
+        "concept_code": "LOINC: 72106-8",
+        "operator": "BETWEEN",
+        "threshold": [22.0, 30.0],
+        "unit": "points",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 8,
+          "section": "3.1 Inclusion Criteria",
+          "paragraph": 3,
+          "raw_clause": "Mini-Mental State Examination (MMSE) score between 22 and 30 inclusive."
+        },
+        "description": "Mini-Mental State Examination score between 22 and 30 points (Clinical Score Range)."
+      },
+      {
+        "criterion_id": "INC_04",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "HeartRate",
+        "concept_code": "LOINC: 8867-4",
+        "operator": "BETWEEN",
+        "threshold": [50.0, 100.0],
+        "unit": "bpm",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 8,
+          "section": "3.1 Inclusion Criteria",
+          "paragraph": 4,
+          "raw_clause": "Resting heart rate between 50 and 100 bpm at screening baseline."
+        },
+        "description": "Resting Heart Rate between 50 and 100 bpm (Vital Sign Range)."
+      },
+      {
+        "criterion_id": "INC_05",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "ECOG",
+        "concept_code": "LOINC: 89247-1",
+        "operator": "<=",
+        "threshold": 1.0,
+        "unit": "score",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 9,
+          "section": "3.1 Inclusion Criteria",
+          "paragraph": 5,
+          "raw_clause": "ECOG Performance Status <= 1."
+        },
+        "description": "ECOG Performance Status <= 1 (Clinical Score Threshold)."
+      },
+      {
+        "criterion_id": "INC_06",
+        "type": "INCLUSION",
+        "category": "BIOMARKER",
+        "concept_name": "ALT",
+        "concept_code": "LOINC: 1742-6",
+        "operator": "<=",
+        "threshold": 105.0,
+        "unit": "U/L",
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 9,
+          "section": "3.1 Inclusion Criteria",
+          "paragraph": 6,
+          "raw_clause": "Serum ALT <= 105 U/L (<= 2.5x upper limit of normal)."
+        },
+        "description": "Serum ALT <= 105 U/L (Laboratory Threshold)."
+      },
+      {
+        "criterion_id": "EXC_01",
+        "type": "EXCLUSION",
+        "category": "MEDICATION_WASHOUT",
+        "concept_name": "Anti-Amyloid Monoclonal",
+        "concept_code": "RxNorm: 2631773",
+        "operator": "WASHOUT_DAYS",
+        "threshold": 90,
+        "unit": "days",
+        "washout_days": 90,
+        "protocol_citation": {
+          "page": 10,
+          "section": "3.2 Exclusion Criteria",
+          "paragraph": 2,
+          "raw_clause": "Prior treatment with an investigational anti-amyloid monoclonal antibody within 90 days of Day 1."
+        },
+        "description": "Requires at least 90 days washout from prior anti-amyloid biologic therapy (Temporal Washout)."
+      },
+      {
+        "criterion_id": "EXC_02",
+        "type": "EXCLUSION",
+        "category": "DIAGNOSIS",
+        "concept_name": "Brain Metastases",
+        "concept_code": "SNOMED: 94225005",
+        "operator": "EXCLUDES",
+        "threshold": "ABSENT",
+        "unit": null,
+        "washout_days": null,
+        "protocol_citation": {
+          "page": 10,
+          "section": "3.2 Exclusion Criteria",
+          "paragraph": 3,
+          "raw_clause": "Active intracranial metastatic disease (SNOMED: 94225005 / ICD-10: C79.31)."
+        },
+        "description": "Excludes active or untreated intracranial metastases (SNOMED / ICD-10 Exclusion)."
+      }
+    ]
+  }
+]

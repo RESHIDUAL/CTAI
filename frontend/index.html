@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governed Clinical Trial Screening & 21 CFR Part 11 Traceability Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Biological Neural Network Canvas -->
+  <canvas id="neuronCanvas"></canvas>
+
+  <!-- Top App Header -->
+  <header class="app-header">
+    <div class="logo-group">
+      <div class="logo-badge">CT·SCREEN</div>
+      <div class="title-group">
+        <h1>Governed Clinical Trial Patient Screening & Traceability Platform</h1>
+        <p>Universal Ingestion (Excel, Word, PDF, Image OCR) : Lyzr Safe AI : AIMS Governance : 21 CFR Part 11</p>
+      </div>
+    </div>
+    <div class="header-status">
+      <span class="badge-pill badge-lyzr" id="badge-lyzr" onclick="openLyzrModal()" style="cursor: pointer;" title="Click to configure Lyzr credentials">Detecting Engine...</span>
+      <button class="capsule-btn capsule-indigo capsule-compact" onclick="openLyzrModal()">Lyzr Credentials</button>
+      <span class="badge-pill badge-part11">21 CFR Part 11 Aligned</span>
+    </div>
+  </header>
+
+  <!-- Secondary Tools Navigation -->
+  <nav class="nav-bar">
+    <button class="nav-tab active" data-tab="workflow">
+      Coordinator Workflow (Steps 1 to 4)
+    </button>
+    <button class="nav-tab" data-tab="library">
+      Document Library Registry
+    </button>
+    <button class="nav-tab" data-tab="fhir">
+      Synthetic FHIR Generator
+    </button>
+    <button class="nav-tab" data-tab="hitl">
+      HITL Webhook & Override
+    </button>
+    <button class="nav-tab" data-tab="aims">
+      Lyzr AIMS Governance
+    </button>
+    <button class="nav-tab" data-tab="phi">
+      Safe AI PHI Inspector
+    </button>
+    <button class="nav-tab" data-tab="adversarial">
+      Adversarial Safety Suite
+    </button>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- Primary Workflow Tab -->
+    <div id="view-workflow" class="tab-view">
+
+      <!-- Procedural Stepper Bar (Starts with Data Ingestion) -->
+      <div class="procedure-stepper-bar">
+        <div class="procedure-step active" id="proc-step-1" onclick="goToStep(1)">
+          <div class="step-badge">STEP 1 (START)</div>
+          <div class="step-label">Data Ingestion</div>
+          <div class="step-desc">Excel, Word, PDF, Image OCR, Text</div>
+        </div>
+        <div class="procedure-step" id="proc-step-2" onclick="goToStep(2)">
+          <div class="step-badge">STEP 2</div>
+          <div class="step-label">Criteria & PHI Inspection</div>
+          <div class="step-desc">Extracted Rules & Safe AI Scrub</div>
+        </div>
+        <div class="procedure-step" id="proc-step-3" onclick="goToStep(3)">
+          <div class="step-badge">STEP 3</div>
+          <div class="step-label">Governed Screening</div>
+          <div class="step-desc">Deterministic Matching & Verdict</div>
+        </div>
+        <div class="procedure-step" id="proc-step-4" onclick="goToStep(4)">
+          <div class="step-badge">STEP 4</div>
+          <div class="step-label">Audit Dossier</div>
+          <div class="step-desc">21 CFR Part 11 Regulatory Export</div>
+        </div>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- PROCEDURE STEP 1: DATA INGESTION (LANDING SCREEN) -->
+      <!-- ============================================================= -->
+      <div id="proc-content-1" class="proc-step-content">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+
+          <!-- Protocol Document Ingestion Card -->
+          <div class="card">
+            <div class="card-header">
+              <h2>1. Clinical Trial Protocol Ingestion</h2>
+              <span style="font-size: 13px; color: #818cf8; font-weight: 700;">Multi-Format Engine</span>
+            </div>
+
+            <div class="format-badges-row">
+              <span class="format-badge">Excel (.xlsx/.csv)</span>
+              <span class="format-badge">Word (.docx)</span>
+              <span class="format-badge">PDF (.pdf)</span>
+              <span class="format-badge">Image OCR (.png/.jpg)</span>
+              <span class="format-badge">JSON/Text</span>
+            </div>
+
+            <div class="dropzone-box" id="dropzone-step1-proto" onclick="document.getElementById('input-step1-proto-file').click()">
+              <input type="file" id="input-step1-proto-file" accept=".xlsx,.xls,.csv,.tsv,.docx,.doc,.pdf,.png,.jpg,.jpeg,.tiff,.bmp,.webp,.json,.txt" onchange="handleStep1ProtocolFile(this)">
+              <div class="dropzone-title">Click to Browse or Drag Protocol Document Here</div>
+              <div class="dropzone-subtitle">Accepts trial protocols in Excel spreadsheets, Word docs, PDFs, or scanned images</div>
+            </div>
+
+            <div class="form-group">
+              <label for="input-step1-proto-title">Protocol Title (Optional):</label>
+              <input type="text" id="input-step1-proto-title" class="form-control" placeholder="Phase 3 Renal & Diabetes Outcomes Study">
+            </div>
+
+            <div class="form-group">
+              <label for="input-step1-proto-text">Or Paste Protocol Eligibility Text / Clauses:</label>
+              <textarea id="input-step1-proto-text" class="form-control" rows="5" placeholder="Inclusion Criteria:&#10;1. Subject eGFR between 30 and 60 mL/min/1.73m2&#10;2. HbA1c between 7.0 and 10.5%&#10;3. Platelet count >= 100000 /uL&#10;4. Age >= 18 years&#10;&#10;Exclusion Criteria:&#10;1. Discontinued GLP-1 within 30 days"></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+              <span id="status-step1-proto" style="font-size: 13px; color: #34d399; font-weight: 600;"></span>
+              <button class="capsule-btn capsule-indigo" onclick="executeStep1ProtocolIngest()">Ingest & Parse Protocol</button>
+            </div>
+
+            <div id="preview-step1-proto" class="extraction-preview-box" style="display: none;">
+              <div class="preview-title">Extracted Protocol Schema</div>
+              <div class="preview-grid" id="preview-step1-proto-grid"></div>
+            </div>
+          </div>
+
+          <!-- Patient EHR Ingestion Card -->
+          <div class="card">
+            <div class="card-header">
+              <h2>2. Patient EHR & Lab Document Ingestion</h2>
+              <span style="font-size: 13px; color: #38bdf8; font-weight: 700;">Safe AI PHI Redaction</span>
+            </div>
+
+            <div class="format-badges-row">
+              <span class="format-badge">Excel Lab Exports</span>
+              <span class="format-badge">Word Records</span>
+              <span class="format-badge">Discharge PDF</span>
+              <span class="format-badge">Scanned Lab OCR</span>
+              <span class="format-badge">FHIR JSON</span>
+            </div>
+
+            <div class="dropzone-box" id="dropzone-step1-ehr" onclick="document.getElementById('input-step1-ehr-file').click()">
+              <input type="file" id="input-step1-ehr-file" accept=".xlsx,.xls,.csv,.tsv,.docx,.doc,.pdf,.png,.jpg,.jpeg,.tiff,.bmp,.webp,.json,.txt" onchange="handleStep1EHRFile(this)">
+              <div class="dropzone-title">Click to Browse or Drag Patient Document Here</div>
+              <div class="dropzone-subtitle">Accepts lab panels in Excel, clinical Word summaries, hospital PDFs, or lab photos</div>
+            </div>
+
+            <div class="form-group">
+              <label for="input-step1-pat-name">Patient Name (Raw PHI - Redacted on Ingestion):</label>
+              <input type="text" id="input-step1-pat-name" class="form-control" placeholder="Marcus Vance (e.g. John Doe)">
+            </div>
+
+            <div class="form-group">
+              <label for="input-step1-pat-text">Or Paste Unstructured Clinical Notes / Lab Report:</label>
+              <textarea id="input-step1-pat-text" class="form-control" rows="5" placeholder="58 yo male presenting for diabetic nephropathy evaluation.&#10;Labs today: eGFR: 45.5 mL/min/1.73m2, HbA1c: 8.2%, Platelets: 220000 /uL.&#10;Active diagnosis: Type 2 Diabetes Mellitus.&#10;Medications: Discontinued semaglutide 35 days ago. MRN-904128. Attending: Dr. Lin, MD."></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+              <span id="status-step1-ehr" style="font-size: 13px; color: #34d399; font-weight: 600;"></span>
+              <button class="capsule-btn capsule-cyan" onclick="executeStep1EHRIngest()">Scrub PHI & Ingest EHR</button>
+            </div>
+
+            <div id="preview-step1-ehr" class="extraction-preview-box" style="display: none;">
+              <div class="preview-title">Extracted & De-Identified Patient Profile</div>
+              <div class="preview-grid" id="preview-step1-ehr-grid"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Step 1 Completion Action Bar -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px;">
+          <div>
+            <strong style="font-size: 16px; color: #f8fafc;">Ingestion Status:</strong>
+            <span id="step1-overall-status" style="margin-left: 10px; font-size: 14px; color: #94a3b8;">Select or upload protocol and patient EHR above to proceed.</span>
+          </div>
+          <button class="capsule-btn capsule-emerald action-btn-large" id="btn-proceed-step2" onclick="goToStep(2)">
+            Proceed to Step 2: Review Extracted Criteria & PHI
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- PROCEDURE STEP 2: CRITERIA & PHI INSPECTION -->
+      <!-- ============================================================= -->
+      <div id="proc-content-2" class="proc-step-content" style="display: none;">
+        <div class="content-split" style="margin-bottom: 24px;">
+          
+          <!-- Extracted Protocol Criteria View -->
+          <div class="card">
+            <div class="card-header">
+              <h2>Extracted Protocol Criteria Rules</h2>
+              <span class="badge-pill badge-lyzr" id="step2-proto-badge">Active Protocol</span>
+            </div>
+            <div id="step2-criteria-container">
+              <!-- Populated via renderStep2Criteria() -->
+            </div>
+          </div>
+
+          <!-- Safe AI Redacted EHR Evidence View -->
+          <div class="card">
+            <div class="card-header">
+              <h2>Lyzr Safe AI De-Identified Patient Record</h2>
+              <span class="badge-pill badge-part11" id="step2-patient-badge">Zero PHI Leaked</span>
+            </div>
+            <div id="step2-ehr-container">
+              <!-- Populated via renderStep2EHR() -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Step 2 Navigation Action Bar -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px;">
+          <button class="capsule-btn capsule-slate" onclick="goToStep(1)">
+            Back to Step 1: Ingestion
+          </button>
+          <button class="capsule-btn capsule-emerald action-btn-large" onclick="goToStep(3)">
+            Proceed to Step 3: Run Governed Screening
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- PROCEDURE STEP 3: GOVERNED SCREENING & VERIFICATION -->
+      <!-- ============================================================= -->
+      <div id="proc-content-3" class="proc-step-content" style="display: none;">
+        
+        <!-- Dynamic HITL Pause Alert Banner (when confidence < 90%) -->
+        <div id="hitl-global-alert" class="hitl-pause-banner" style="display: none; background: #2b1d07; border: 2px solid #d97706; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span class="status-tag status-UNKNOWN">HITL PAUSE ACTIVE</span>
+              <strong style="margin-left: 10px; color: #fbbf24; font-size: 15px;">Confidence Below 90% Threshold</strong>
+            </div>
+            <button class="capsule-btn capsule-rose capsule-compact" onclick="switchTab('hitl')">Open Override Console</button>
+          </div>
+          <p id="hitl-alert-reason" style="font-size: 13.5px; color: #fde68a; margin-top: 8px;">
+            Automated screening paused. Webhook notification dispatched to clinical research coordinators.
+          </p>
+        </div>
+
+        <!-- Target Selector & Screening Execution Card -->
+        <div class="card">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 18px;">
+            <div class="form-group">
+              <label for="select-protocol">Selected Protocol for Evaluation:</label>
+              <select id="select-protocol" class="form-control" onchange="onProtocolChange()">
+                <option value="">-- Loading Protocols --</option>
+              </select>
+              <div id="protocol-meta" class="meta-tag-row" style="margin-top: 8px;"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="select-patient">Selected Candidate Subject for Evaluation:</label>
+              <select id="select-patient" class="form-control" onchange="onPatientChange()">
+                <option value="">-- Loading Patients --</option>
+              </select>
+              <div id="patient-meta" class="meta-tag-row" style="margin-top: 8px;"></div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1.5px solid #1e293b;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 13px; font-weight: 700; color: #38bdf8;">Deterministic Engine + Safe AI Active</span>
+            </div>
+            <button class="capsule-btn capsule-emerald action-btn-large" onclick="triggerScreening()">
+              Execute Governed Clinical Screening
+            </button>
+          </div>
+        </div>
+
+        <!-- Executive KPI Cards -->
+        <div class="metric-cards-grid" id="screening-metric-cards">
+          <div class="kpi-card">
+            <div class="kpi-label">Active Protocol</div>
+            <div class="kpi-value" id="kpi-protocol-id">NCT05128990</div>
+            <div class="kpi-subtext" id="kpi-protocol-title">Type 2 Diabetes &amp; CKD Study</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Patient Subject</div>
+            <div class="kpi-value" id="kpi-patient-id">PATIENT-001</div>
+            <div class="kpi-subtext" id="kpi-patient-info">Age 54y / Male / Safe AI Masked</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Mathematical Certainty</div>
+            <div class="kpi-value" id="kpi-confidence-val" style="color: #10b981;">100%</div>
+            <div class="kpi-subtext" id="kpi-confidence-sub">Zero Numerical Hallucination</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">21 CFR Part 11 Seal</div>
+            <div class="kpi-value" style="font-family: monospace; font-size: 15px; color: #38bdf8;" id="kpi-sha-seal">b7a840e...</div>
+            <div class="kpi-subtext" id="kpi-sha-status">Immutable Audit Trail</div>
+          </div>
+        </div>
+
+        <!-- Two-Column Layout: Screening Results & EHR Evidence -->
+        <div class="content-split">
+          <div class="left-panel">
+            <div id="screening-results-container">
+              <!-- Populated via renderScreeningResults() -->
+            </div>
+          </div>
+
+          <div class="right-panel">
+            <div class="card" id="patient-evidence-card">
+              <div class="card-header">
+                <h2>EHR Clinical Evidence & Labs</h2>
+                <span class="badge-pill badge-lyzr" id="evidence-mode-badge">Safe AI Masked</span>
+              </div>
+              <div id="patient-evidence-body">
+                <!-- Populated via renderPatientEvidence() -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 Navigation Action Bar -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; margin-top: 24px;">
+          <button class="capsule-btn capsule-slate" onclick="goToStep(2)">
+            Back to Step 2: Review Criteria
+          </button>
+          <button class="capsule-btn capsule-amber action-btn-large" onclick="goToStep(4)">
+            Proceed to Step 4: Export Audit Dossier
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================= -->
+      <!-- PROCEDURE STEP 4: 21 CFR PART 11 AUDIT DOSSIER -->
+      <!-- ============================================================= -->
+      <div id="proc-content-4" class="proc-step-content" style="display: none;">
+        <div class="card">
+          <div class="card-header">
+            <h2>FDA-Style / Part 11-Oriented Audit Dossier Export</h2>
+            <div style="display: flex; gap: 12px;">
+              <button class="capsule-btn capsule-slate" onclick="downloadDossierJson()">Download Audit JSON</button>
+              <button class="capsule-btn capsule-amber" onclick="printDossierHtml()">Export / Print Styled Dossier (PDF)</button>
+            </div>
+          </div>
+          <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">
+            This regulatory dossier includes immutable step-by-step reasoning, LOINC/ICD-10/RxNorm ontology alignments, EHR evidence quotes, and an SHA-256 cryptographic seal compliant with 21 CFR Part 11 electronic record traceability principles.
+          </p>
+          <div id="dossier-preview-box" style="background: #080f1d; color: #f8fafc; padding: 24px; border-radius: 10px; font-family: monospace; font-size: 13px; max-height: 520px; overflow-y: auto; border: 1.5px solid #1e293b;">
+            <pre id="dossier-json-content">// Execute screening in Step 3 to view generated JSON dossier...</pre>
+          </div>
+        </div>
+
+        <!-- Step 4 Navigation Action Bar -->
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px;">
+          <button class="capsule-btn capsule-slate" onclick="goToStep(3)">
+            Back to Step 3: Screening Results
+          </button>
+          <button class="capsule-btn capsule-indigo action-btn-large" onclick="goToStep(1)">
+            Start New Screening Case (Step 1: Ingestion)
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECONDARY VIEW: DOCUMENT LIBRARY -->
+    <!-- ============================================================= -->
+    <div id="view-library" class="tab-view" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <h2>Active Registered Documents Library</h2>
+          <button class="capsule-btn capsule-slate capsule-compact" onclick="refreshIngestedLibrary()">Refresh Library</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div>
+            <h3 style="font-size: 15px; font-weight: 800; text-transform: uppercase; color: #818cf8; margin-bottom: 12px;">Registered Protocols</h3>
+            <div id="library-protocols-container" style="max-height: 380px; overflow-y: auto;"></div>
+          </div>
+          <div>
+            <h3 style="font-size: 15px; font-weight: 800; text-transform: uppercase; color: #38bdf8; margin-bottom: 12px;">Registered Patient EHR Records</h3>
+            <div id="library-patients-container" style="max-height: 380px; overflow-y: auto;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECONDARY VIEW: SYNTHETIC FHIR GENERATOR -->
+    <!-- ============================================================= -->
+    <div id="view-fhir" class="tab-view" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <h2>Synthetic HL7 FHIR R4 Generator (Borderline Scenarios)</h2>
+          <span style="font-size: 13px; color: #38bdf8; font-weight: 700;">Zero-Cost Sensitivity Testing</span>
+        </div>
+        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 18px;">
+          Generate standards-compliant HL7 FHIR R4 bundles containing Patient, Observation (LOINC), Condition (ICD-10), and MedicationStatement resources specifically targeting mathematical threshold boundaries.
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div>
+            <label style="font-weight: 700; font-size: 14px; color: #cbd5e1;">Select Borderline Medical History Preset:</label>
+            <select id="select-fhir-preset" class="form-control" style="margin-top: 8px; margin-bottom: 16px;">
+              <option value="egfr_upper_borderline_eligible">Borderline eGFR 59.9 mL/min (Eligible for 30 to 60)</option>
+              <option value="egfr_upper_borderline_ineligible">Borderline eGFR 60.1 mL/min (Ineligible for 30 to 60)</option>
+              <option value="washout_borderline_fail">Borderline Washout 29 Days (Ineligible for 30d)</option>
+              <option value="washout_borderline_pass">Borderline Washout 31 Days (Eligible for 30d)</option>
+              <option value="missing_biomarker_human_review">Missing HbA1c Lab Observation (Requires Human Review)</option>
+            </select>
+            <div style="display: flex; gap: 12px;">
+              <button class="capsule-btn capsule-purple" onclick="generateFhirBundle()">Generate FHIR R4 Bundle</button>
+              <button class="capsule-btn capsule-emerald" onclick="generateAndScreenFhirPatient()">Load & Screen Patient</button>
+            </div>
+            <div id="fhir-generation-status" style="margin-top: 12px; font-size: 13px; color: #34d399; font-weight: 600;"></div>
+          </div>
+          <div>
+            <label style="font-weight: 700; font-size: 14px; color: #cbd5e1;">Generated HL7 FHIR R4 JSON Bundle:</label>
+            <div class="fhir-code-box" id="fhir-json-preview" style="margin-top: 8px; background: #080f1d; color: #f8fafc; padding: 16px; border-radius: 10px; font-family: monospace; font-size: 13px; height: 280px; overflow-y: auto; border: 1.5px solid #1e293b;">
+              // Click "Generate FHIR R4 Bundle" to inspect structured resource payloads...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECONDARY VIEW: HITL WEBHOOK & OVERRIDE CONSOLE -->
+    <!-- ============================================================= -->
+    <div id="view-hitl" class="tab-view" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <h2>Human-in-the-Loop (HITL) Webhook & Override Console</h2>
+          <button class="capsule-btn capsule-slate capsule-compact" onclick="refreshHitlEvents()">Refresh Paused Queue</button>
+        </div>
+        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">
+          When criteria certainty drops below the 90% threshold, autonomous execution halts. Clinical research coordinators review highlighted evidence, provide rationale, and affix an FDA 21 CFR Part 11 compliant digital override.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+          <div>
+            <h3 style="font-size: 14px; font-weight: 800; text-transform: uppercase; color: #94a3b8; margin-bottom: 12px;">
+              Active Paused Screening Queue
+            </h3>
+            <div id="hitl-queue-container"></div>
+          </div>
+
+          <div>
+            <h3 style="font-size: 14px; font-weight: 800; text-transform: uppercase; color: #94a3b8; margin-bottom: 12px;">
+              Webhook Configuration
+            </h3>
+            <div style="background: #1e293b; border: 1.5px solid #334155; border-radius: 10px; padding: 18px;">
+              <label style="font-weight: 700; font-size: 13px; color: #cbd5e1;">Notification Webhook URL:</label>
+              <input type="text" id="input-webhook-url" class="form-control" placeholder="https://api.site.org/webhooks/trial-alert" style="margin: 8px 0 12px 0;">
+              <button class="capsule-btn capsule-rose" onclick="registerWebhookUrl()" style="width: 100%;">Register Webhook</button>
+              <div id="registered-webhooks-list" style="margin-top: 14px; font-size: 12.5px; color: #94a3b8;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECONDARY VIEW: LYZR AIMS GOVERNANCE DASHBOARD -->
+    <!-- ============================================================= -->
+    <div id="view-aims" class="tab-view" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <h2>Lyzr AIMS (AI Management System) Telemetry & Governance</h2>
+          <button class="capsule-btn capsule-purple capsule-compact" onclick="refreshAimsTelemetry()">Refresh Stream</button>
+        </div>
+        <div id="aims-metrics-summary" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;"></div>
+        <h3 style="font-size: 14px; font-weight: 800; margin-bottom: 12px; text-transform: uppercase; color: #94a3b8;">
+          Real-time Governed Execution Stream
+        </h3>
+        <div class="aims-stream" id="aims-event-container"></div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECONDARY VIEW: LYZR SAFE AI PHI REDACTION INSPECTOR -->
+    <!-- ============================================================= -->
+    <div id="view-phi" class="tab-view" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <h2>Lyzr Safe AI - Interactive HIPAA PHI Redaction Sandbox</h2>
+          <span style="font-size: 13px; color: #38bdf8; font-weight: 700;">18 Safe Harbor Identifiers Masked Pre-Inference</span>
+        </div>
+        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 18px;">
+          Test any unstructured doctor note, phone number, MRN, or patient identifier below to observe real-time de-identification before data enters agent inference.
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div>
+            <label style="font-weight: 700; font-size: 13px; color: #cbd5e1;">Original Clinical Note (Unscrubbed with PHI):</label>
+            <input type="text" id="phi-name-input" placeholder="Patient Name (e.g. John Doe)" value="Eleanor Vance" style="width: 100%; padding: 10px; margin: 8px 0 12px 0; border: 1.5px solid #475569; border-radius: 8px; font-size: 14px; background: #1e293b; color: #f8fafc;">
+            <textarea id="phi-custom-input" rows="8" style="width: 100%; padding: 12px; border: 1.5px solid #475569; border-radius: 8px; font-size: 14px; font-family: monospace; background: #1e293b; color: #f8fafc;">Patient Eleanor Vance (DOB 1967-11-20, MRN-882104) arrived at clinic. Call (555) 234-8901 for follow up. eGFR measured 44.0 mL/min/1.73m2. Attending: Dr. Sarah Lin, MD.</textarea>
+            <button class="capsule-btn capsule-cyan" style="margin-top: 12px;" onclick="scrubCustomText()">
+              Scrub PHI with Lyzr Safe AI
+            </button>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label style="font-weight: 700; font-size: 13px; color: #cbd5e1;">De-Identified Note (Zero Unmasked Identifiers):</label>
+              <span id="phi-redacted-count" style="font-size: 12px; font-weight: 700; color: #34d399;">Ready</span>
+            </div>
+            <div id="phi-custom-output" style="background: #080f1d; border: 1.5px solid #1e293b; border-radius: 8px; padding: 14px; height: 215px; font-family: monospace; font-size: 14px; white-space: pre-wrap; overflow-y: auto; color: #f8fafc; margin-top: 8px;">
+              // Click "Scrub PHI with Lyzr Safe AI" to inspect redacted output...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================= -->
+    <!-- SECONDARY VIEW: ADVERSARIAL SAFETY SUITE -->
+    <!-- ============================================================= -->
+    <div id="view-adversarial" class="tab-view" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <h2>Adversarial Clinical Safety & Anti-Hallucination Test Suite</h2>
+          <span style="font-size: 13px; color: #34d399; font-weight: 700;">Deterministic Rule Verification</span>
+        </div>
+        <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">
+          Validates that the screening engine is strictly deterministic and immune to boundary rounding errors, prose-based hallucinations, and prompt-injection attacks hidden within patient medical records.
+        </p>
+        <div id="adversarial-results-container"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ============================================================= -->
+  <!-- MODAL: LYZR CREDENTIALS -->
+  <!-- ============================================================= -->
+  <div id="lyzr-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: #f8fafc;">Lyzr Ecosystem Configuration</h3>
+        <button onclick="closeLyzrModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94a3b8;">X</button>
+      </div>
+      <p style="font-size: 14px; color: #94a3b8; margin-bottom: 16px;">
+        Provide your Lyzr Agent API key and Agent ID to route evaluations through live Lyzr Cloud endpoints.
+      </p>
+      <div class="form-group">
+        <label>Lyzr API Key:</label>
+        <input type="password" id="input-lyzr-key" class="form-control" placeholder="sk-default-...">
+      </div>
+      <div class="form-group">
+        <label>Lyzr Agent ID:</label>
+        <input type="text" id="input-lyzr-agent" class="form-control" value="6aafa27f23bdcdc9f029eeba">
+      </div>
+      <div class="form-group">
+        <label>User ID / Coordinator Identity:</label>
+        <input type="text" id="input-lyzr-user" class="form-control" value="shivanir1105@gmail.com">
+      </div>
+      <div class="form-group">
+        <label>Lyzr Endpoint URL:</label>
+        <input type="text" id="input-lyzr-url" class="form-control" value="https://agent-prod.studio.lyzr.ai/v3/inference/chat/">
+      </div>
+      <div class="form-group" style="margin-bottom: 20px;">
+        <label>Lyzr Environment ID:</label>
+        <input type="text" id="input-lyzr-env" class="form-control" value="env_clinical_trial_01">
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 12px;">
+        <button class="capsule-btn capsule-slate" onclick="closeLyzrModal()">Cancel</button>
+        <button class="capsule-btn capsule-emerald" onclick="saveLyzrCredentials()">Save & Verify</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- MODAL: 21 CFR PART 11 AUDIT & EVIDENCE CHAIN TRACE -->
+  <!-- ============================================================= -->
+  <div id="decision-evidence-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card" style="max-width: 780px; width: 90%;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: #f8fafc;">21 CFR Part 11 Audit Trail & Provenance Trace</h3>
+        <button onclick="closeDecisionEvidenceModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94a3b8;">X</button>
+      </div>
+      <p style="font-size: 14px; color: #94a3b8; margin-bottom: 16px;">
+        Deterministic verification sequence with SHA-256 provenance hash chain, zero-hallucination execution, and complete audit logs.
+      </p>
+      <div id="evidence-chain-container" style="display: flex; flex-direction: column; gap: 14px; max-height: 500px; overflow-y: auto;"></div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+        <button class="capsule-btn capsule-slate" onclick="closeDecisionEvidenceModal()">Close Trace</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- MODAL: COORDINATOR OVERRIDE (HITL) -->
+  <!-- ============================================================= -->
+  <div id="criterion-edit-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+        <h3 style="font-size: 18px; font-weight: 800; color: #f8fafc;">Coordinator Criterion Override (HITL)</h3>
+        <button onclick="closeCriterionEditModal()" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #94a3b8;">X</button>
+      </div>
+      <p style="font-size: 13.5px; color: #94a3b8; margin-bottom: 16px;">
+        21 CFR Part 11 human-in-the-loop override with permanent cryptographic coordinator audit logging.
+      </p>
+      <div style="display: none;"><span id="modal-crit-id"></span><span id="modal-crit-concept"></span><span id="modal-crit-baseline-summary"></span></div>
+      <div class="form-group">
+        <label>Criterion Type:</label>
+        <select id="modal-edit-type" class="form-control">
+          <option value="INCLUSION">INCLUSION</option>
+          <option value="EXCLUSION">EXCLUSION</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Comparison Operator:</label>
+        <select id="modal-edit-operator" class="form-control" onchange="toggleThresholdFields()">
+          <option value=">=">&gt;= (Greater than or equal)</option>
+          <option value=">">&gt; (Greater than)</option>
+          <option value="<=">&lt;= (Less than or equal)</option>
+          <option value="<">&lt; (Less than)</option>
+          <option value="==">== (Exact match)</option>
+          <option value="BETWEEN">BETWEEN (Range)</option>
+        </select>
+      </div>
+      <div id="modal-single-thresh-container" class="form-group">
+        <label>Threshold Value:</label>
+        <input type="number" step="any" id="modal-edit-threshold" class="form-control">
+      </div>
+      <div id="modal-range-thresh-container" class="form-group" style="display: none;">
+        <label>Range (Lower - Upper):</label>
+        <div style="display: flex; gap: 10px;">
+          <input type="number" step="any" id="modal-edit-lower" class="form-control" placeholder="Lower">
+          <input type="number" step="any" id="modal-edit-upper" class="form-control" placeholder="Upper">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Measurement Unit:</label>
+        <input type="text" id="modal-edit-unit" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Washout Window (Days):</label>
+        <input type="number" id="modal-edit-washout" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Audit Rationale (Mandatory 21 CFR Part 11):</label>
+        <input type="text" id="modal-edit-rationale" class="form-control" placeholder="IRB amendment or clinical coordinator judgement">
+      </div>
+      <div class="form-group">
+        <label>Coordinator Identity:</label>
+        <input type="text" id="modal-edit-coordinator" class="form-control" value="Lead Research Coordinator, RN">
+      </div>
+      <div id="modal-edit-error" style="color: #f87171; font-size: 13px; margin-bottom: 12px; display: none;"></div>
+      <div style="display: flex; justify-content: flex-end; gap: 12px;">
+        <button class="capsule-btn capsule-slate" onclick="closeCriterionEditModal()">Cancel</button>
+        <button class="capsule-btn capsule-emerald" onclick="saveEditedCriterion()">Sign & Save Override</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
